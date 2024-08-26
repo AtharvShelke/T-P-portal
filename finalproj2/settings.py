@@ -26,6 +26,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'notices',
     'users',
+    'django_extensions'
 ]
 
 MIDDLEWARE = [

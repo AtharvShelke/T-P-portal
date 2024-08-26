@@ -1,31 +1,15 @@
 {% extends 'main.html' %}
+{% load static %}
 
+{% block extra_css %}
+  
+{% endblock extra_css %}
 {% block content %}
 
-<div class="view-toggle">
-    <button id="toggleButton"><i class='bx bx-list-ul'></i><span class="tooltip">Change View</span></button>
-</div>
 
-<div class="card-container" id="cardContainer">
-  {% for drive in page_obj %}
-  <div class="card" data-status="{{ drive.drive_status }}">
-    <div class="img">
-      <img src="{{ drive.company_logo.url }}" alt="Company Logo" />
-    </div>
-    <div class="all-text">
-      <div class="name">{{ drive.title }}</div>
-      <div class="all_drives">Industry Type: {{ drive.industry_type }}</div>
-      <div class="text">Date: {{ drive.date }}  | <span class="status-text {{ drive.drive_status | lower }}">{{ drive.drive_status }}</span></div>
 
-      <div class="btn btn-shadow">
-        <a href="{% url 'drive' drive.drive_id %}">Read more</a>
-      </div>
-    </div>
-  </div>
-  {% endfor %}
-</div>
-
-<div class="list-container" id="listContainer" style="display: none;">
+<div class="list-container" id="listContainer" style="display: block;">
+  
   {% for drive in page_obj %}
   <div class="list-item" data-status="{{ drive.drive_status }}">
     <div class="list-item-left">
@@ -67,35 +51,6 @@
 </div>
 
 <script>
- document.addEventListener("DOMContentLoaded", function() {
-    const toggleButton = document.getElementById("toggleButton");
-    const cardContainer = document.getElementById("cardContainer");
-    const listContainer = document.getElementById("listContainer");
-
-    // Check if the user has a stored preference for the view
-    const storedView = localStorage.getItem("viewPreference");
-
-    if (storedView === "card") {
-        cardContainer.style.display = "grid";
-        listContainer.style.display = "none";
-    } else {
-        cardContainer.style.display = "none";
-        listContainer.style.display = "block";
-    }
-
-    toggleButton.addEventListener("click", function() {
-        if (cardContainer.style.display === "none") {
-            cardContainer.style.display = "grid";
-            listContainer.style.display = "none";
-            // Store the user's preference for card view
-            localStorage.setItem("viewPreference", "card");
-        } else {
-            cardContainer.style.display = "none";
-            listContainer.style.display = "block";
-            // Store the user's preference for list view
-            localStorage.setItem("viewPreference", "list");
-        }
-    });
 
     // Change button shadow color based on status
     const updateButtonShadowColor = (elements, baseClass) => {

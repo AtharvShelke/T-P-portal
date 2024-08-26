@@ -1,4 +1,10 @@
 {% extends 'main.html' %}
+{% load static %}
+
+
+{% block extra_css %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/create_drive.css' %}">
+{% endblock extra_css %}
 
 {% block content %}
 
@@ -18,7 +24,7 @@
         </div>
     </div>
    
-
+    <script src="{% static 'js/CreateDrive.js' %}"></script>
 
 {% endblock content %}
 

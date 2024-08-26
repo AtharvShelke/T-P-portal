@@ -1,14 +1,20 @@
 
 {% extends 'main.html' %}
+{% load static %}
 
+
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/dashboard.css' %}">
+{% endblock extra_css %}
 {% block content %}
 
 
 {% if request.user.is_authenticated and request.user.user_type == 'TNP-Office' %}
   <div class="notice_button">
     
-    <a href="{% url 'create-drive' %}"><button id="create_drive">Create Drive</button></a>
-    <a href="{% url 'create-activity' %}"><button id="create_activity">Create Activity</button></a>
+    <a href="{% url 'create-drive' %}" id="create_drive">Create Drive</a>
+    <a href="{% url 'create-activity' %}" id="create_activity">Create Activity</a>
 
   </div>
   {% endif %} 

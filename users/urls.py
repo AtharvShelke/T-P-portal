@@ -3,13 +3,13 @@ from . import views
 from django.contrib.auth import views as auth_views
 
 urlpatterns = [
-
+path('', views.login_view, name='login'),
     path('all-students/', views.all_students, name='all_students'),
     path('all-coordinators/', views.all_coordinators, name='all_coordinators'),
     path('register-student/', views.register_student, name='register-student'),
     path('register-coordinator/', views.register_coordinator, name='register-coordinator'),
     path('register-tnpoffice/', views.register_tnpoffice, name='register-tnpoffice'),
-    path('', views.login_view, name='login'),
+    
     path('logout/', views.logout_view, name='logout'),
     path('student-profile/<int:student_prn>/', views.student_profile, name='student_profile'),
     path('profile/edit_coordinator/', views.edit_coordinator_profile, name='coordinator_edit'),

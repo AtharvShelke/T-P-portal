@@ -267,23 +267,26 @@ def register_coordinator(request):
     if request.method == 'POST':
         user_form = CustomUserForm(request.POST)
         coordinator_form = CoordinatorForm(request.POST, request.FILES)
-        print("DATA:",coordinator_form)
 
         if user_form.is_valid() and coordinator_form.is_valid():
-
-            user = user_form.save()
+            user = user_form.save(commit=False)
             user.set_password(user_form.cleaned_data["password1"])
             user.save()
+            
             Coordinator.objects.create(user=user, **coordinator_form.cleaned_data)
-            print("DATA:",coordinator_form.cleaned_data )
-            user.backend = 'users.authentication.EmailBackend'             
-            # login(request, user)
-            return redirect('login')  # Redirect to the dashboard after successful registration
+            
+            # Uncomment the line below to log in the user immediately after registration
+            #login(request, user, backend='users.authentication.EmailBackend')
+            
+            return redirect('login')  # Redirect to the login page after successful registration
     else:
         user_form = CustomUserForm()
         coordinator_form = CoordinatorForm()
         
-    return render(request, 'coordinator_registration.html', {'user_form': user_form, 'coordinator_form': coordinator_form, })
+    return render(request, 'coordinator_registration.html', {
+        'user_form': user_form, 
+        'coordinator_form': coordinator_form,
+    })
 
 @login_required
 @coordinator_required

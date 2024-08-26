@@ -1,6 +1,10 @@
 {% extends 'main.html' %}
+{% load static %}
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/coordinator_profile.css' %}">
+{% endblock extra_css %}
     {% block content %} 
-    {% load static %}
+    
         <div class="coordinatorContainer">
             {% if request.user.user_type == 'Coordinator' %}
                 <div class="coordinator-pr-card">
@@ -12,7 +16,7 @@
                                 <img class="co_profile_img" src="{% static 'images/user-default.png.' %}" alt="Coordinator DP" />
                             {% endif %}
                         </div>
-                        <h3>NAME: {{ coordinator.NAME }}</h3>
+                        <h3 class="coordinator-name">NAME: {{ coordinator.NAME }}</h3>
                     </div>
                     <div class="coordinator-pr-card-body">
                         <p class="mb-0"><strong class="pr-1">Coordinator ID:</strong> {{ coordinator.C_ID }}</p>
@@ -23,7 +27,7 @@
                         <p class="mb-0"><strong class="pr-1">Department:</strong> {{ coordinator.department }}</p>
                         <p class="mb-0"><strong class="pr-1">Institute:</strong> {{ coordinator.INSTITUTE }}</p>
                     </div>
-                    <a href="{% url 'coordinator_edit' %}" class="btn btn-primary">Edit Profile</a>
+                    <a href="{% url 'coordinator_edit' %}" class="edit-profile-btn">Edit Profile</a>
     
                 </div>
            
@@ -38,7 +42,7 @@
                                 <img class="co_profile_img" src="{% static 'images/user-default.png.' %}" alt="TNP Office DP" />
                             {% endif %}
                         </div>
-                        <h3>NAME: {{ tnpoffice.NAME }}</h3>
+                        <h3 class="coordinator-name">NAME: {{ tnpoffice.NAME }}</h3>
                     </div>
                     <div class="coordinator-pr-card-body">
                         <p class="mb-0"><strong class="pr-1">TNP Office ID:</strong> {{ tnpoffice.T_ID }}</p>
@@ -47,7 +51,7 @@
                         <p class="mb-0"><strong class="pr-1">Personal Email:</strong> {{ tnpoffice.PERSONAL_EMAIL }}</p>
     
                     </div>
-                    <a href="{% url 'tnpoffice_edit' %}" class="btn btn-primary">Edit Profile</a>
+                    <a href="{% url 'tnpoffice_edit' %}" class="edit-profile-btn">Edit Profile</a>
     
                 </div>
             {% endif %}

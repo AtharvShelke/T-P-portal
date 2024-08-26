@@ -1,11 +1,15 @@
 {% extends 'main.html' %}
+{% load static %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/create_activity.css' %}">
+{% endblock extra_css %}
 
 {% block content %}
 
-    <div class="drive_card">
-        <h1 class="dropdown-btn">Create Activity</h1>
-        <div class="drive_card-body hidden">
-            <form id="jobForm"  method="POST" enctype="multipart/form-data">
+        <div class="create-activity-container">
+            <h2 class="create_activity_heading">Create Activity</h2>
+            <form id="create_activity_form"  method="POST" enctype="multipart/form-data">
               {% csrf_token %}
                 {% for field in form %}
                     <div class="form-group">
@@ -16,9 +20,8 @@
                 <button type="submit" class="btn btn-submit">Create</button>
             </form>
         </div>
-    </div>
    
-
+       
 
 {% endblock content %}
 
