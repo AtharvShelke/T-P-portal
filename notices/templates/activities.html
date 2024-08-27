@@ -1,31 +1,15 @@
 {% extends 'main.html' %}
+{% load static %}
+{% block extra_css %}
+  <link rel="stylesheet" type="text/css" href="{% static 'css/activities.css' %}" />
+{% endblock extra_css %}
+
 
 {% block content %}
 
-<div class="view-toggle">
-  <button id="toggleButton"><i class='bx bx-list-ul' ></i><span class="tooltip">Change View</span>
-  </button>
-</div>
+<h1 class="activity_heading">Activities</h1>
 
-<div class="card-container" id="cardContainer">
-  {% for activity in page_obj %}
-  <div class="card" data-status="{{ activity.activity_status }}">
-    <div class="img">
-      <img src="{{ activity.company_logo.url }}" alt="Company Logo" />
-    </div>
-    <div class="all-text">
-      <div class="name">{{ activity.title }}</div>
-      <div class="all_drives">Industry Type: {{ activity.industry_type }}</div>   
-      <div class="text">Date: {{ activity.activity_date }} | <span class="status-text {{ activity.activity_status | lower }}">{{ activity.activity_status }}</span></div>
-      <div class="btn">
-        <a href="{% url 'activity' activity.activity_id %}">Read more</a>
-      </div>
-    </div>
-  </div>
-  {% endfor %}
-</div>
-
-<div class="list-container" id="listContainer" style="display: none;">
+<div class="list-container" id="listContainer">
   {% for activity in page_obj %}
   <div class="list-item" data-status="{{ activity.activity_status }}">
     <div class="list-item-left">
@@ -47,78 +31,6 @@
   {% endfor %}
 </div>
 
-<!-- Pagination controls -->
-<div class="pagination">
-  <span class="step-links">
-      {% if page_obj.has_previous %}
-          <a href="?page=1">&laquo; first</a>
-          <a href="?page={{ page_obj.previous_page_number }}">previous</a>
-      {% endif %}
 
-      <span class="current">
-          Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
-      </span>
-
-      {% if page_obj.has_next %}
-          <a href="?page={{ page_obj.next_page_number }}">next</a>
-          <a href="?page={{ page_obj.paginator.num_pages }}">last &raquo;</a>
-      {% endif %}
-  </span>
-</div>
-
-<script>
-  document.addEventListener("DOMContentLoaded", function() {
-     const toggleButton = document.getElementById("toggleButton");
-     const cardContainer = document.getElementById("cardContainer");
-     const listContainer = document.getElementById("listContainer");
  
-     // Check if the user has a stored preference for the view
-     const storedView = localStorage.getItem("viewPreference");
- 
-     if (storedView === "card") {
-         cardContainer.style.display = "grid";
-         listContainer.style.display = "none";
-     } else {
-         cardContainer.style.display = "none";
-         listContainer.style.display = "block";
-     }
- 
-     toggleButton.addEventListener("click", function() {
-         if (cardContainer.style.display === "none") {
-             cardContainer.style.display = "grid";
-             listContainer.style.display = "none";
-             // Store the user's preference for card view
-             localStorage.setItem("viewPreference", "card");
-         } else {
-             cardContainer.style.display = "none";
-             listContainer.style.display = "block";
-             // Store the user's preference for list view
-             localStorage.setItem("viewPreference", "list");
-         }
-     });
- 
-     // Change button shadow color based on status
-     const updateButtonShadowColor = (elements, baseClass) => {
-         elements.forEach(element => {
-             const status = element.getAttribute("data-status");
-             const btnParent = element.querySelector("div");
-             if (status === "Upcoming") {
-                 btnParent.classList.add(`${baseClass}-shadow-yellow`);
-             } else if (status === "Active") {
-                 btnParent.classList.add(`${baseClass}-shadow-green`);
-             } else if (status === "Closed") {
-                 btnParent.classList.add(`${baseClass}-shadow-red`);
-             }
-         });
-     };
- 
-     const cardButtons = document.querySelectorAll(".card .btn");
-     updateButtonShadowColor(cardButtons, "btn");
- 
-     const listButtons = document.querySelectorAll(".list-item .list-read-more");
-     updateButtonShadowColor(listButtons, "list-read-more");
- });
- 
-</script>
-
 {% endblock %}

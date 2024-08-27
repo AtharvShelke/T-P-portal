@@ -1,19 +1,9 @@
 
-const emailField = document.querySelector('.email-field');
-const passwordField = document.querySelector('.password-field');
 const popUp = document.querySelector('.popup-overlay')
 
-const emailLabel = document.querySelector('#email-label');
 
-emailLabel.addEventListener('click', () => {
-    emailField.style.display = 'flex'
-})
 
-const passwordLabel = document.querySelector('#password-label');
 
-passwordLabel.addEventListener('click', () => {
-    passwordField.style.display = 'flex'
-});
 
 const closePopup = () => {
     popUp.style.display = 'none'

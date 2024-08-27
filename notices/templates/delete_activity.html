@@ -1,13 +1,20 @@
 {% extends 'main.html' %}
+{% load static %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/logout.css' %}">
+{% endblock extra_css %}
+
 
     {% block content %}
-    <div class="delete_container">
+    <div class="logout_container">
         <form method="post">
             {% csrf_token %}
-            <p class="delete_p">Are you sure you want to delete "{{activity.title}}"?</p>
-            <div class="delete_button_container">
-                <a class="Cancel_button" href="{% url 'activities' %}"> Cancel </a>
-                <button type="submit" class="Delete_button">Yes, Sure</button>
+            <p class="logout_p">Are you sure you want to delete "{{activity.title}}"?</p>
+            <div class="logout_button_container">
+                <button type="submit" class="logout_btn logout_yes_button">Yes, Sure</button>
+                <a class="logout_btn logout_cancel_button" href="{% url 'activities' %}"> Cancel </a>
+                
 
             </div>
         </form>

@@ -1,10 +1,15 @@
 {% extends 'main.html' %}
+{% load static %}
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/create_activity.css' %}">
+{% endblock extra_css %}
+
 
 {% block content %}
-  <div class="edit_profile_card">
-    <h1 class="dropdown-btn">Edit Profile</h1>
-    <div class="edit_profile_card-body hidden">
-        <form method="POST" enctype="multipart/form-data">
+<div class="create-activity-container">
+  <h2 class="create_activity_heading">Edit Profile</h2>
+    
+        <form id="create_activity_form" method="POST" enctype="multipart/form-data">
           {% csrf_token %}
           {% for field in form %}
             <div class="form-group">
@@ -15,30 +20,10 @@
               {% endif %}
             </div>
           {% endfor %}
-          <button type="submit" class="btn btn-submit">Submit</button>
+          <button type="submit" class="edit_profile_btn" style="width: 100%;">Submit</button>
         </form>
-    </div>
+    
   </div>
 
-  <script>
-    document.addEventListener('DOMContentLoaded', function () {
-      const dropdownBtn = document.querySelector('.dropdown-btn');
-      const cardBody = document.querySelector('.edit_profile_card-body.hidden');
-
-      dropdownBtn.addEventListener('click', function () {
-          if (cardBody.style.display === 'block') {
-              cardBody.style.display = 'none';
-          } else {
-              cardBody.style.display = 'block';
-          }
-      });
-
-      // Close form when clicking outside
-      window.addEventListener('click', function (event) {
-          if (!dropdownBtn.contains(event.target) && !cardBody.contains(event.target)) {
-              cardBody.style.display = 'none';
-          }
-      });
-    });
-  </script>
+ 
 {% endblock %}

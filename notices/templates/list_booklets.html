@@ -2,121 +2,16 @@
     
 <!-- templates/list_booklets.html -->
 {% extends 'main.html' %}
-
-{% block content %}
 {% load static %}
 
-<style>
-    .list-container {
-        margin-left: 6.8cm;
-        overflow: auto;
-        padding: 30px;
-        max-width: 2000px;
-        margin-top: 100px;
-    }
-    .booklet-item {
-        background-color: #ffffff;
-        border-radius: 10px;
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        transition: box-shadow 0.3s ease;
-        padding: 20px;
-        margin-bottom: 20px;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-    }
-    .booklet-item:hover {
-        box-shadow: 0 10px 24px #0f3243;
-    }
-    .booklet-left {
-        display: flex;
-        align-items: center;
-    }
-    .booklet-thumbnail {
-        width: 80px;
-        height: 80px;
-        overflow: hidden;
-        border-radius: 50%;
-        margin-right: 20px;
-    }
-    .booklet-thumbnail img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-    }
-    .booklet-info {
-        flex: 1;
-    }
-    .booklet-title {
-        font-size: 1.2em;
-        font-weight: bold;
-        margin-bottom: 5px;
-    }
-    .booklet-date {
-        font-size: 0.9em;
-        color: #666;
-    }
-    .booklet-department {
-        font-size: 0.9em;
-        color: #999;
-    }
-    .booklet-link {
-        background-color: #63bbd1;
-        color: white;
-        padding: 6px 9px;
-        border-radius: 4px;
-        text-decoration: none;
-        display: inline-block;
-        font-size: 14px;
-    }
-    .booklet-link:hover {
-        background-color: #0f3243;
-        color: white;
-    }
-/*  */
-.notice_button {
-    width: 80px;
-    height: 60px;
-    justify-content: center;
-    margin-left: 300px;
-    gap: 40px;
 
-
-}
-
-.notice_button button {
-    font-family: 'Poppins', sans-serif;
-
-    /* margin: 0 10px; */
-    /* Adjust the gap between buttons */
-    margin-top: 1cm;
-
-    cursor: pointer;
-    border-radius: 5px;
-    /* border-radius: 30px; */
-    background-color: #63bbd1;
-    color: white;
-    /* White text */
-    font-size: 15px;
-    overflow: hidden;
-    /* Transition background-color, color, and transform */
-    text-align: center;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    /* Add shadow for depth */
-}
-
-
-.notice_button button:hover {
-    color: white;
-    background-color: #0f3243;
-
-    /* Add more pronounced upward movement on hover */
-}
+{% block extra_css %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/lists_booklets.css' %}" />
+  {% endblock extra_css %}
+{% block content %}
 
 
 
-
-</style>
 
 {% if request.user.is_authenticated and request.user.user_type != 'Student' %}
 <div class="notice_button">
@@ -125,12 +20,13 @@
 
   </div>
   {% endif %}
-
+  <h1 class="booklet_heading">Booklets</h1>
 <div class="list-container" id="listContainer">
+    
     {% for booklet in unique_booklets %}
         <div class="booklet-item">
             <div class="booklet-left">
-                <div class="booklet-thumbnail">
+                <div class="booklet-thumbnail logo">
                     <img src="{{ booklet.company_logo.url }}" alt="{{ booklet.company_name }} Thumbnail">
                 </div>
                 <div class="booklet-info">

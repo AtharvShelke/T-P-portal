@@ -3,15 +3,16 @@
 
 
 {% block extra_css %}
-<link rel="stylesheet" type="text/css" href="{% static 'css/create_drive.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'css/create_activity.css' %}">
 {% endblock extra_css %}
 
 {% block content %}
 
-    <div class="drive_card">
-        <h1 class="dropdown-btn">Upload Booklet</h1>
-        <div class="drive_card-body hidden">
-            <form id="jobForm"  method="POST" enctype="multipart/form-data">
+    
+       
+        <div class="create-activity-container">
+            <h3 class="create_activity_heading">Upload Booklet</h3>
+            <form id="create_activity_form"  method="POST" enctype="multipart/form-data">
               {% csrf_token %}
                 {% for field in form %}
                     <div class="form-group">
@@ -24,7 +25,7 @@
         </div>
     </div>
    
-    <script src="{% static 'js/CreateDrive.js' %}"></script>
+    
 
 {% endblock content %}
 

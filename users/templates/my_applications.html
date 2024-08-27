@@ -1,6 +1,14 @@
 {% extends 'main.html' %}
+{% load static %}
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/my_applications.css' %}">
+{% endblock extra_css %}
+
+
 
 {% block content %}
+<h1 class='my_applications_heading'>My Applications</h1>
+<div class="my_applications_container">
     {% if not applied_activities and not drive_applications %}
         <p>No applications found. <a href="{% url 'all-drives' %}">Go to drives</a></p>
     {% else %}
@@ -8,7 +16,7 @@
         {% if request.user.user_type != 'Student' %}
             <h1>Student's Applications </h1>
         {% else %}
-            <h1>My Applications </h1>
+            
         {% endif %}
 
         <table class="application-table">
@@ -51,5 +59,6 @@
             {% endfor %}
         </table>
     </div>
+</div>
     {% endif %}
 {% endblock %}

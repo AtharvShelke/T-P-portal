@@ -2,13 +2,14 @@
 {% load static %}
 
 {% block extra_css %}
-  
+  <link rel="stylesheet" type="text/css" href="{% static 'css/all_drives.css' %}" />
 {% endblock extra_css %}
+
 {% block content %}
 
+<h1 class='all_drives_heading'>Drives</h1>
 
-
-<div class="list-container" id="listContainer" style="display: block;">
+<div class="list-container" id="listContainer">
   
   {% for drive in page_obj %}
   <div class="list-item" data-status="{{ drive.drive_status }}">
@@ -29,50 +30,10 @@
     </div>
   </div>
   {% endfor %}
+  
 </div>
 
-<!-- Pagination controls -->
-<div class="pagination">
-    <span class="step-links">
-        {% if page_obj.has_previous %}
-            <a href="?page=1">&laquo; first</a>
-            <a href="?page={{ page_obj.previous_page_number }}">previous</a>
-        {% endif %}
 
-        <span class="current">
-            Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
-        </span>
 
-        {% if page_obj.has_next %}
-            <a href="?page={{ page_obj.next_page_number }}">next</a>
-            <a href="?page={{ page_obj.paginator.num_pages }}">last &raquo;</a>
-        {% endif %}
-    </span>
-</div>
-
-<script>
-
-    // Change button shadow color based on status
-    const updateButtonShadowColor = (elements, baseClass) => {
-        elements.forEach(element => {
-            const status = element.getAttribute("data-status");
-            const btnParent = element.querySelector("div");
-            if (status === "Upcoming") {
-                btnParent.classList.add(`${baseClass}-shadow-yellow`);
-            } else if (status === "Active") {
-                btnParent.classList.add(`${baseClass}-shadow-green`);
-            } else if (status === "Closed") {
-                btnParent.classList.add(`${baseClass}-shadow-red`);
-            }
-        });
-    };
-
-    const cardButtons = document.querySelectorAll(".card .btn");
-    updateButtonShadowColor(cardButtons, "btn");
-
-    const listButtons = document.querySelectorAll(".list-item .list-read-more");
-    updateButtonShadowColor(listButtons, "list-read-more");
-});
-</script>
 
 {% endblock %}

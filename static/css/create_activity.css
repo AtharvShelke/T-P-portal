@@ -16,7 +16,11 @@
     text-align: center;
     margin-bottom: 20px; 
 }
-
+.btn-submit{
+    background-color: #0f3243;
+    color: #fff;
+    font-weight: bold;
+}
 .form-group {
     margin-bottom: 15px; 
 }
@@ -77,6 +81,8 @@ label[for="id_department_9"]{
     padding-bottom: 1rem;
     border-bottom: 1px solid rgba(128, 128, 128, 0.241);
 }
+
+
 /* width */
 ::-webkit-scrollbar {
     width: 10px;
