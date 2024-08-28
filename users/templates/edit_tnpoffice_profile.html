@@ -2,15 +2,15 @@
 {% load static %}
 
 {% block extra_css %}
-<link rel="stylesheet" href="{% static 'css/edit_tnpoffice_profile.css' %}">
+<link rel="stylesheet" href="{% static 'css/create_activity.css' %}">
 {% endblock extra_css %}
 
 {% block content %}
 
 
 
-  <div class="edit_tnp_profile_card">
-    <h2 class="edit_tnp_heading">Edit Profile</h2>
+<div class="create-activity-container">
+    <h2 class="create_activity_heading">Edit Profile</h2>
 
     <form method="POST" enctype="multipart/form-data">
       {% csrf_token %}
@@ -23,7 +23,7 @@
           {% endif %}
         </div>
       {% endfor %}
-      <button type="submit" class="btn btn-submit">Submit</button>
+      <button type="submit" class="edit_profile_btn">Submit</button>
     </form>
   </div>
 {% endblock %}
