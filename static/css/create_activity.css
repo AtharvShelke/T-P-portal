@@ -124,7 +124,8 @@ label[for="id_sem4_marksheet"],
 label[for="id_sem5_marksheet"],
 label[for="id_sem6_marksheet"],
 label[for="id_sem7_marksheet"],
-label[for="id_sem8_marksheet"]{
+label[for="id_sem8_marksheet"],
+label[for="id_PROFILE_PHOTO"]{
     
     display: block;
 
