@@ -4,22 +4,25 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+    min-height: 100vh;
     background-color: #f5f5f5;
-    width: 50%;
-    margin-left: 500px;
+    width: 90%;
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
     margin-bottom: 50px;
     font-family: 'Poppins', sans-serif;
-    padding: auto;
+    padding: 0 20px;
 }
 
 /* Coordinator profile card */
 .coordinator-pr-card {
     display: flex;
     flex-direction: column;
-    width: 80%;
+    width: 100%;
     max-width: 1200px;
-    height: 80vh;
+    height: auto;
+    max-height: 80vh;
     background-color: #ffffff;
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
     border-radius: 1rem;
@@ -28,18 +31,18 @@
 
 /* Header section of the card */
 .coordinator-pr-card-header {
-    padding: 30px;
+    padding: 20px;
     font-weight: bold;
     text-align: center;
     background-color: #318398;
-    height: 300px;
+    height: 250px;
     color: #ffffff;
 }
 
 /* Container for profile image to maintain fixed size */
 .co_profile_img_container {
-    width: 195px;
-    height: 195px;
+    width: 150px;
+    height: 150px;
     margin: 20px auto;
     display: flex;
     justify-content: center;
@@ -47,7 +50,6 @@
     overflow: hidden;
     border-radius: 50%;
     background-color: #ddd;
-    /* Optional: background color if image not loaded */
 }
 
 /* Profile image styling */
@@ -59,9 +61,30 @@
 /* Body content of the card */
 .coordinator-pr-card-body {
     flex: 1;
-    padding: 30px;
-    font-size: 18px;
+    padding: 20px;
+    font-size: 16px;
     overflow-y: auto;
+}
+
+/* Ensure list items are flexible */
+.coordinator-pr-card-body ul {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    padding: 0;
+    margin: 0;
+    list-style-type: none;
+}
+
+/* Make list items dynamic in width */
+.coordinator-pr-card-body ul li {
+    flex: 1 1 auto;
+    min-width: 100px;
+    max-width: calc(33.33% - 10px); /* Adjust max-width for 3 items per row */
+    background-color: #e0e0e0;
+    padding: 10px;
+    border-radius: 8px;
+    box-sizing: border-box;
 }
 
 /* Styling for strong text within the body */
@@ -73,4 +96,83 @@
 .coordinator-pr-card-body p {
     margin-bottom: 20px;
     line-height: 1.6;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+    .coordinatorContainer {
+        width: 80%;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .coordinator-pr-card {
+        max-width: 100%;
+        height: auto;
+    }
+
+    .coordinator-pr-card-header {
+        height: 200px;
+    }
+
+    .co_profile_img_container {
+        width: 130px;
+        height: 130px;
+    }
+
+    .coordinator-pr-card-body {
+        font-size: 16px;
+    }
+
+    .coordinator-pr-card-body ul li {
+        max-width: calc(50% - 10px); /* 2 items per row on smaller screens */
+    }
+}
+
+@media (max-width: 768px) {
+    .coordinatorContainer {
+        width: 100%;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .coordinator-pr-card-header {
+        padding: 15px;
+        height: 180px;
+    }
+
+    .co_profile_img_container {
+        width: 100px;
+        height: 100px;
+    }
+
+    .coordinator-pr-card-body {
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 480pxx) {
+    .coordinatorContainer {
+        width: 100%;
+        margin-top: 20px;
+        margin-bottom: 20px;
+    }
+
+    .coordinator-pr-card-header {
+        padding: 10px;
+        height: 150px;
+    }
+
+    .co_profile_img_container {
+        width: 80px;
+        height: 80px;
+    }
+
+    .coordinator-pr-card-body {
+        font-size: 14px;
+    }
+
+    .coordinator-pr-card-body ul li {
+        max-width: 100%; /* 1 item per row on very small screens */
+    }
 }
