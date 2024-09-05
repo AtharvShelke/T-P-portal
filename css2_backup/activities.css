@@ -1,0 +1,185 @@
+/* Sidebar Container */
+.sidebar-container {
+    display: flex;
+    flex-direction: column;
+    width: 250px; /* Fixed width for desktop */
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 100; /* Ensures sidebar is on top */
+    background-color: #0f3243;
+    padding: 10px 14px;
+    border-radius: 0 20px 20px 0;
+    font-family: 'Poppins', sans-serif;
+    transition: width 0.3s ease;
+}
+
+.sidebar-container.close {
+    width: 88px; /* Width when sidebar is collapsed */
+}
+
+/* Content and Layout Adjustments */
+.home, .activity_heading, .list-container {
+    margin-left: 260px; /* Adjusted to leave space for sidebar */
+    padding: 20px;
+    transition: margin-left 0.3s ease; /* Smooth transition for dynamic adjustment */
+}
+
+/* Adjusted Heading for Activities */
+.activity_heading {
+    color: #0f3243;
+    margin-top: 3rem;
+    font-size: 2rem; /* Increased font size for better visibility */
+    transition: margin-left 0.3s ease; /* Smooth transition for dynamic adjustment */
+}
+
+/* Adjusted List Container */
+.list-container {
+    margin-top: 3rem;
+    margin-bottom: 3rem;
+    width: 90%; /* Full width of the container with some padding */
+    max-width: 1100px; /* Maximum width constraint for larger screens */
+    transition: margin-left 0.3s ease; /* Smooth transition for dynamic adjustment */
+}
+
+/* List Item Styles */
+.list-item {
+    padding: 1rem; /* Relative padding for consistency */
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 1rem; /* Consistent spacing between items */
+    border-radius: 20px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+    transition: box-shadow 0.3s ease, transform 0.3s ease; /* Added transform transition for hover effect */
+    width: 100%; /* Full width of the container */
+    max-width: 1100px; /* Maximum width constraint for larger screens */
+    height: auto; /* Auto height for flexibility */
+    overflow: hidden;
+    position: relative;
+    border: 2px solid #e6e2e2;
+    background: linear-gradient(to right, #f0f5f7, #b7d8e6); /* Soft gradient background for visual appeal */
+}
+
+.list-item:hover {
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.4); /* Enhanced shadow effect on hover */
+    transform: translateY(-5px); /* Adds a slight lift effect on hover */
+}
+
+.list-item-left {
+    display: flex;
+    align-items: center;
+}
+
+/* Logo Styling */
+.logo {
+    width: 80px;
+    height: 80px;
+    margin-right: 20px;
+}
+
+.logo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+/* Dates and Drive Title */
+.dates {
+    display: flex;
+    flex-direction: column;
+}
+
+.drive-title {
+    font-weight: bold;
+    color: #0f3243; /* Matches heading color for consistency */
+}
+
+/* Read More Button */
+.list-read-more {
+    margin-left: auto;
+}
+
+.list-read-more a {
+    background-color: #63bbd1;
+    color: white;
+    padding: 0.5rem 1rem; /* Relative padding */
+    border-radius: 10px;
+    text-decoration: none;
+    display: inline-block;
+    transition: background-color 0.3s ease, transform 0.3s ease; /* Smooth transition on hover */
+}
+
+.list-read-more a:hover {
+    background-color: #0f3243;
+    transform: scale(1.05); /* Slightly increase size on hover for effect */
+    cursor: pointer;
+}
+
+/* Status Text Styling */
+.status-text {
+    font-weight: bold;
+}
+
+.status-text.upcoming {
+    color: rgba(255, 183, 0, 0.731); /* Yellowish color for upcoming status */
+}
+
+.status-text.active {
+    color: rgba(0, 255, 0, 0.6); /* Green color for active status */
+}
+
+.status-text.closed {
+    color: rgba(255, 0, 0, 0.6); /* Red color for closed status */
+}
+
+/* Media Queries for Responsiveness */
+@media (max-width: 768px) {
+    .sidebar-container {
+        display: none; /* Hide sidebar on smaller screens */
+    }
+
+    .home, .activity_heading, .list-container {
+        margin-left: 0; /* No margin when sidebar is hidden */
+        width: 100%; /* Full width for content */
+        padding: 10px; /* Add padding for better look */
+    }
+
+    .list-item {
+        flex-direction: column; /* Stack elements vertically on smaller screens */
+        align-items: flex-start;
+        width: 100%; /* Full width for mobile */
+        margin-bottom: 1rem; /* Space out items on smaller screens */
+    }
+
+    .logo {
+        width: 60px; /* Smaller logo size for better fit */
+        height: 60px;
+    }
+
+    .list-read-more {
+        width: 100%; /* Full width for buttons on smaller screens */
+        margin-top: 1rem; /* Space out buttons from content */
+        text-align: center;
+    }
+}
+
+@media (max-width: 480px) {
+    .activity_heading,
+    .list-container {
+        margin-left: 0; /* No margin for smallest screens */
+        width: 100%; /* Full width for content */
+        padding: 10px; /* Add padding for better look */
+    }
+
+    .list-item {
+        width: 100%; /* Full width for small screens */
+    }
+
+    .logo {
+        width: 50px; /* Further reduce logo size for very small screens */
+        height: 50px;
+    }
+}

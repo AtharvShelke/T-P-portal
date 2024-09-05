@@ -250,6 +250,8 @@ def register_student(request):
                 
         else:
             # Print form errors for debugging
+            print(user_form.is_valid())
+            print(student_form.errors)
             print("User Form Data:", user_form.cleaned_data)  # Print user form data
     else:
         user_form = CustomUserForm(view_name='register_student')

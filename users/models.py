@@ -8,19 +8,20 @@ from django.contrib.auth.models import AbstractUser
 
 
 class CustomUser(AbstractUser):
-
     USER_CHOICES = [
         ('Student', 'Student'),
         ('Coordinator', 'Coordinator'),
         ('TNP-Office', 'TNP-Office'),
     ]
-    user_type = models.CharField(max_length=15, choices=USER_CHOICES,default ='Student')
-    username = models.CharField(max_length=10,null=True,blank=True)
+    user_type = models.CharField(max_length=15, choices=USER_CHOICES, default='Student')
+    username = models.CharField(max_length=10, null=True, blank=True)
+    
     # Specify email as the USERNAME_FIELD
     USERNAME_FIELD = 'email'
     
-    # Remove email from REQUIRED_FIELDS
-    REQUIRED_FIELDS = []
+    # Add username to REQUIRED_FIELDS
+    REQUIRED_FIELDS = ['username']
+    
     # Ensure email is marked as unique
     email = models.EmailField(unique=True)
 
@@ -63,14 +64,14 @@ class Student(models.Model):
     FIRST_NAME = models.CharField(max_length=255)
     MIDDLE_NAME = models.CharField(max_length=255)
     LAST_NAME= models.CharField(max_length=255)
-    PRN = models.PositiveIntegerField(unique=True)
+    PRN = models.BigIntegerField(unique=True, null=True)
     DOB = models.DateField(default='2001-10-02')
     GENDER = models.CharField(max_length=10, choices=GENDER_CHOICES)
     EMAIL = models.EmailField(unique=True)
     PERSONAL_EMAIL = models.EmailField(unique=True)
     AGE = models.PositiveIntegerField()
-    MOBILE_NO = models.PositiveIntegerField()
-    ALT_Mobile_NO = models.PositiveIntegerField()
+    MOBILE_NO = models.BigIntegerField()
+    ALT_Mobile_NO = models.BigIntegerField()
     LOCAL_ADDRS = models.CharField(max_length=255)
     PERM_ADDRS = models.CharField(max_length=255)
     Native_Place = models.CharField(max_length=255)
