@@ -1,51 +1,68 @@
-
 {% load static %}
-{% block extra_css %}
-<link rel="stylesheet" href="{% static 'css/create_activity.css' %}">
-{% endblock extra_css %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Student Registration</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+  <link rel="stylesheet" href="{% static 'css/registration.css' %}">
 
-
+</head>
+<body>
+  <div class="container">
+    <div class="left-section">
+      <div class="upper-left">
+        <h1>Central Training & Placement Department</h1>
+        <h3>Providing opportunities and preparing for the workforce.</h3>
+      </div>
+      <div class="lower-left">
+        <img src="{% static 'images/image.png' %}" alt="Training & Placement">
+      </div>
+    </div>
+    <div class="right-section">
+      <div class="reg_container">
         <div class="title-box">
           <h1>Register Yourself Here</h1>
         </div>
         <form method="POST" enctype="multipart/form-data">
-          <form method="POST" enctype="multipart/form-data">
-            {% csrf_token %}
-  
-  
-            {% if form.non_field_errors %}
-              <div class="error-message">
-                {{ form.non_field_errors }}
-              </div>
-            {% endif %}
-  
-            {% for field in user_form %}
-              <div class="reg-form-group">
-                <label for="{{ field.id_for_label }}">{{ field.label }}</label>
-                {{ field }}
-                {% if field.errors %}
-                  <div class="error-message">
-                    {{ field.errors }}
-                  </div>
-                {% endif %}
-              </div>
-            {% endfor %}
-      
-            {% for field in tnpoffice_form %}
-              <div class="reg-form-group">
-                <label for="{{ field.id_for_label }}">{{ field.label }}</label>
-                {{ field }}
-                {% if field.errors %}
-                  <div class="error-message">
-                    {{ field.errors }}
-                  </div>
-                {% endif %}
-              </div>
-            {% endfor %}
-            
-            <div class="register-btn">
-              <button type="submit" class="btn-primary">Register</button>
+          {% csrf_token %}
+
+
+          {% if form.non_field_errors %}
+            <div class="error-message">
+              {{ form.non_field_errors }}
             </div>
+          {% endif %}
+
+          {% for field in user_form %}
+            <div class="reg-form-group">
+              <label for="{{ field.id_for_label }}">{{ field.label }}</label>
+              {{ field }}
+              {% if field.errors %}
+                <div class="error-message">
+                  {{ field.errors }}
+                </div>
+              {% endif %}
+            </div>
+          {% endfor %}
+    
+          {% for field in tnpoffice_form %}
+            <div class="reg-form-group">
+              <label for="{{ field.id_for_label }}">{{ field.label }}</label>
+              {{ field }}
+              {% if field.errors %}
+                <div class="error-message">
+                  {{ field.errors }}
+                </div>
+              {% endif %}
+            </div>
+          {% endfor %}
+          
+          <div class="register-btn">
+            <button type="submit" class="btn-primary">Register</button>
+          </div>
         </form>
       </div>
     </div>
