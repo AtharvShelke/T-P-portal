@@ -1,4 +1,17 @@
-.notice_button{
+/* Base styles for the body */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+    line-height: 1.6;
+    background: linear-gradient(135deg, #e1eec3, #f05053); /* Soft gradient background with a touch of color */
+    background-size: cover; /* Ensures background covers the entire screen */
+    background-attachment: fixed; /* Fixed background for a parallax effect */
+    color: #333; /* General text color for contrast */
+}
+
+/* Enhanced styling for the notice button container */
+.notice_button {
     position: fixed;
     top: 50%;
     left: 55%;
@@ -9,28 +22,81 @@
     display: flex;
     justify-content: space-evenly;
     align-items: center;
-    border-radius: 0.3rem;
-
+    border-radius: 0.5rem;
     font-family: 'Poppins', sans-serif;
+    background: rgba(255, 255, 255, 0.9); /* Slightly transparent white background */
+    backdrop-filter: blur(15px); /* Adds a stronger blur effect */
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    border: 1px solid #b0bec5;
+    transition: all 0.3s ease-in-out;
 }
-#create_drive, #create_activity{
+
+/* Enhanced button styling */
+#create_drive, #create_activity {
     text-align: center;
     text-decoration: none;
     font-size: 16px;
-    
     border: none;
-    background-color: #0f3243;
+    background: linear-gradient(135deg, #0f2027, #2c5364); /* Darker blue gradient for a more formal look */
     font-weight: 600;
     cursor: pointer;
     color: white;
     padding: 1rem 1.25rem;
-    border-radius: 0.5rem;
-    transition: all 0.15s;
-    
+    border-radius: 0.75rem;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+    animation: fadeInGlow 3s infinite; /* Applying a gentle fade-in glow animation */
 }
-#create_drive:hover{
-    background-color: #63bbd1;
+
+/* Hover effect for buttons */
+#create_drive:hover, #create_activity:hover {
+    background: linear-gradient(135deg, #2c5364, #0f2027); /* Reverse gradient on hover */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+    transform: translateY(-2px);
 }
-#create_activity:hover{
-    background-color: #63bbd1;
+
+/* Active effect for buttons */
+#create_drive:active, #create_activity:active {
+    transform: translateY(0);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background: linear-gradient(135deg, #2c5364, #0f2027);
+}
+
+/* Subtle and formal fade-in glow animation */
+@keyframes fadeInGlow {
+    0%, 100% {
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+        opacity: 1;
+    }
+    50% {
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2); /* Slight glow effect */
+        opacity: 0.8; /* Gentle fade effect */
+    }
+}
+
+/* Additional enhancements for page layout */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    text-align: center;
+}
+
+/* Footer and other common elements */
+.footer {
+    padding: 20px;
+    text-align: center;
+    background-color: #0f2027; /* Darker blue for the footer */
+    color: white;
+    margin-top: 20px;
+}
+
+.footer a {
+    color: #63bbd1;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.footer a:hover {
+    color: #8fc7e7;
 }
